@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS VARS: adapt to OS colour scheme ─────────────────────────────────── */
+:root {
+  /* Light mode defaults */
+  --page-bg:       #f0f0f8;
+  --text-primary:  #0f0f1a;
+  --text-dim:      #4a4a6a;
+  --text-muted:    #8888aa;
+  --border:        rgba(0, 0, 0, 0.08);
+  --surface:       rgba(255, 255, 255, 0.7);
+
+  /* Brand colours stay same in both modes */
+  --indigo:        #6366f1;
+  --indigo-glow:   #818cf8;
+  --teal:          #2dd4bf;
+
+  /* Cards are ALWAYS dark — they're contrast elements */
+  --card-bg:       #181826;
+  --card-border:   rgba(255, 255, 255, 0.07);
+  --card-text:     #f1f5f9;
+  --card-text-dim: #94a3b8;
+  --card-text-mut: #64748b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-bg:      #0a0a0f;
+    --text-primary: #f1f5f9;
+    --text-dim:     #94a3b8;
+    --text-muted:   #64748b;
+    --border:       rgba(255, 255, 255, 0.08);
+    --surface:      rgba(255, 255, 255, 0.04);
+  }
+}
+
+/* ─── BASE ───────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+  min-height: 100%;
+  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* ─── SELECTION ──────────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(99, 102, 241, 0.25);
+  color: var(--text-primary);
+}
+
+/* ─── SCROLLBAR ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 4px; background: var(--page-bg); }
+::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.35); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.6); }
+
+/* ─── CURSOR ─────────────────────────────────────────────────────────────── */
+[data-magnetic] { cursor: none !important; }
+
+/* ─── FOCUS ──────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── KEYFRAMES ──────────────────────────────────────────────────────────── */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes marquee {
+  from { transform: translateX(0);    }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marqueeReverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0);    }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 8px #2dd4bf; }
+  50%       { box-shadow: 0 0 20px #2dd4bf, 0 0 40px rgba(45,212,191,0.3); }
+}
