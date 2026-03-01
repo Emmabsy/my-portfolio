@@ -43,8 +43,8 @@ export default function ContactPage() {
 
       <Navbar />
 
-      <div className="px-[clamp(20px,5vw,80px)] pb-24 pt-28">
-        <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[1fr_1.4fr]">
+      <div className="px-[clamp(20px,5vw,80px)] px-[clamp(16px,5vw,80px)] pb-16 pt-24 sm:pb-24 sm:pt-28">
+        <div className="mx-auto grid max-w-5xl gap-8 sm:gap-12 lg:grid-cols-[1fr_1.4fr]">
 
           {/* ── Left: info panel ── */}
           <div className="pt-2">
