@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 
 export function MagneticCursor() {
-  const [pos, setPos]         = useState({ x: -200, y: -200 });
-  const [hover, setHover]     = useState(false);
+  const [pos,     setPos]     = useState({ x: -200, y: -200 });
+  const [hover,   setHover]   = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -29,19 +29,28 @@ export function MagneticCursor() {
 
   return (
     <>
+      {/* Outer ring — uses CSS var for color so it's visible in both modes */}
       <div
-        className="pointer-events-none fixed z-[9999] -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-screen transition-[width,height,background,border] duration-200"
+        className="pointer-events-none fixed z-[9999] -translate-x-1/2 -translate-y-1/2 rounded-full transition-[width,height,opacity] duration-200"
         style={{
-          left: pos.x, top: pos.y,
+          left: pos.x,
+          top:  pos.y,
           width:  hover ? 44 : 12,
           height: hover ? 44 : 12,
-          background: hover ? "transparent" : "#7c6af7",
-          border: hover ? "1.5px solid #a78bfa" : "none",
+          background:   hover ? "transparent" : "var(--cursor-fill)",
+          border:       hover ? "1.5px solid var(--cursor-ring)" : "none",
+          opacity: 0.9,
         }}
       />
+      {/* Centre dot — always visible */}
       <div
-        className="pointer-events-none fixed z-[9999] h-[3px] w-[3px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white"
-        style={{ left: pos.x, top: pos.y }}
+        className="pointer-events-none fixed z-[9999] h-[4px] w-[4px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          left:       pos.x,
+          top:        pos.y,
+          background: "var(--brand)",
+          opacity: hover ? 1 : 0,
+        }}
       />
     </>
   );

@@ -2,59 +2,116 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── CSS VARS: adapt to OS colour scheme ─────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   DESIGN TOKEN SYSTEM
+   • Default (no class on html) = DARK
+   • html.light = LIGHT MODE
+   • ThemeProvider toggles: document.documentElement.classList.toggle("light")
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── DARK (default — no class needed) ───────────────────────────────────── */
 :root {
-  /* Light mode defaults */
-  --page-bg:       #f0f0f8;
-  --text-primary:  #0f0f1a;
-  --text-dim:      #4a4a6a;
-  --text-muted:    #8888aa;
-  --border:        rgba(0, 0, 0, 0.08);
-  --surface:       rgba(255, 255, 255, 0.7);
+  --bg:              #0a0a0f;
+  --bg-alt:          #0f0e1a;
+  --bg-elevated:     #13121e;
 
-  /* Brand colours stay same in both modes */
-  --indigo:        #6366f1;
-  --indigo-glow:   #818cf8;
-  --teal:          #2dd4bf;
+  --text:            #f1f5f9;
+  --text-dim:        #94a3b8;
+  --text-muted:      #64748b;
 
-  /* Cards are ALWAYS dark — they're contrast elements */
-  --card-bg:       #181826;
-  --card-border:   rgba(255, 255, 255, 0.07);
-  --card-text:     #f1f5f9;
-  --card-text-dim: #94a3b8;
-  --card-text-mut: #64748b;
+  --border:          rgba(255, 255, 255, 0.08);
+  --border-sub:      rgba(255, 255, 255, 0.04);
+  --surface:         rgba(255, 255, 255, 0.04);
+  --nav-bg:          rgba(10, 10, 20, 0.88);
+
+  --card-bg:         #1e1d33;
+  --card-border:     rgba(255, 255, 255, 0.08);
+  --card-text:       #f1f5f9;
+  --card-text-dim:   #94a3b8;
+  --card-text-muted: #64748b;
+  --card-shadow:     0 2px 0 rgba(255,255,255,0.05) inset, 0 8px 40px rgba(0,0,0,0.4);
+  --card-shadow-lg:  0 2px 0 rgba(255,255,255,0.06) inset, 0 40px 100px rgba(0,0,0,0.7);
+
+  --chip-bg:         rgba(99, 102, 241, 0.12);
+  --chip-border:     rgba(99, 102, 241, 0.28);
+  --chip-text:       #818cf8;
+
+  --form-bg:         rgba(255, 255, 255, 0.04);
+  --form-bg-focus:   rgba(255, 255, 255, 0.07);
+  --form-text:       #f1f5f9;
+  --form-placeholder: rgba(255, 255, 255, 0.25);
+
+  --cursor-fill:     #7c6af7;
+  --cursor-ring:     #a78bfa;
+
+  --brand:           #6366f1;
+  --brand-dim:       #818cf8;
+  --teal:            #2dd4bf;
+  --indigo:          #6366f1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --page-bg:      #0a0a0f;
-    --text-primary: #f1f5f9;
-    --text-dim:     #94a3b8;
-    --text-muted:   #64748b;
-    --border:       rgba(255, 255, 255, 0.08);
-    --surface:      rgba(255, 255, 255, 0.04);
-  }
+/* ── LIGHT (html.light) ──────────────────────────────────────────────────── */
+html.light {
+  --bg:              #f0f0f8;
+  --bg-alt:          #e8e8f4;
+  --bg-elevated:     #ffffff;
+
+  --text:            #0f0f1a;
+  --text-dim:        #3a3a5c;
+  --text-muted:      #7070a0;
+
+  --border:          rgba(99, 102, 241, 0.15);
+  --border-sub:      rgba(0, 0, 0, 0.05);
+  --surface:         rgba(255, 255, 255, 0.8);
+  --nav-bg:          rgba(240, 240, 248, 0.92);
+
+  --card-bg:         #ffffff;
+  --card-border:     rgba(99, 102, 241, 0.18);
+  --card-text:       #0f0f1a;
+  --card-text-dim:   #3a3a5c;
+  --card-text-muted: #7070a0;
+  --card-shadow:     0 2px 16px rgba(99,102,241,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  --card-shadow-lg:  0 8px 40px rgba(99,102,241,0.14), 0 2px 8px rgba(0,0,0,0.06);
+
+  --chip-bg:         rgba(99, 102, 241, 0.08);
+  --chip-border:     rgba(99, 102, 241, 0.22);
+  --chip-text:       #4f46e5;
+
+  --form-bg:         #ffffff;
+  --form-bg-focus:   #fafaff;
+  --form-text:       #0f0f1a;
+  --form-placeholder: rgba(0, 0, 0, 0.35);
+
+  --cursor-fill:     #4f46e5;
+  --cursor-ring:     #6366f1;
+
+  --brand:           #6366f1;
+  --brand-dim:       #4f46e5;
+  --teal:            #0d9488;
+  --indigo:          #6366f1;
 }
 
 /* ─── BASE ───────────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 
 html, body {
-  background-color: var(--page-bg);
-  color: var(--text-primary);
+  background-color: var(--bg);
+  color: var(--text);
   min-height: 100%;
-  overflow-x: hidden;
-  transition: background-color 0.3s, color 0.3s;
+  /* overflow-x: clip — NOT hidden. "hidden" creates a new scroll container
+     which silently breaks position:sticky on all descendants.
+     "clip" clips visually without creating a scroll container. */
+  overflow-x: clip;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* ─── SELECTION ──────────────────────────────────────────────────────────── */
 ::selection {
   background: rgba(99, 102, 241, 0.25);
-  color: var(--text-primary);
+  color: var(--text);
 }
 
 /* ─── SCROLLBAR ──────────────────────────────────────────────────────────── */
-::-webkit-scrollbar       { width: 4px; background: var(--page-bg); }
+::-webkit-scrollbar       { width: 4px; background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.35); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.6); }
 
@@ -63,26 +120,90 @@ html, body {
 
 /* ─── FOCUS ──────────────────────────────────────────────────────────────── */
 :focus-visible {
-  outline: 2px solid #6366f1;
+  outline: 2px solid var(--brand);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* ─── GLASS UTILITY ──────────────────────────────────────────────────────── */
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* ─── NAV GLASS ──────────────────────────────────────────────────────────── */
+.nav-glass {
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.25s;
+}
+
+/* ─── GRID TEXTURE ───────────────────────────────────────────────────────── */
+.grid-texture {
+  background-image:
+    linear-gradient(var(--border-sub) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-sub) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─── FORM INPUTS ────────────────────────────────────────────────────────── */
+.form-input {
+  background: var(--form-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--form-text);
+  padding: 12px 16px;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+  font-family: inherit;
+  transition: border-color 0.2s, background 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-input::placeholder {
+  color: var(--form-placeholder);
+}
+
+.form-input:focus {
+  border-color: var(--brand);
+  background: var(--form-bg-focus);
+}
+
+/* Light mode: select options readable */
+html.light .form-input option {
+  background: #ffffff;
+  color: #0f0f1a;
+}
+
+/* ─── TEXT GRADIENT ──────────────────────────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, var(--brand), var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ─── KEYFRAMES ──────────────────────────────────────────────────────────── */
 @keyframes fadeSlideUp {
   from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0);    }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes marquee {
-  from { transform: translateX(0);    }
+  from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
 @keyframes marqueeReverse {
   from { transform: translateX(-50%); }
-  to   { transform: translateX(0);    }
+  to   { transform: translateX(0); }
 }
 @keyframes float {
-  0%, 100% { transform: translateY(0px);  }
+  0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-8px); }
 }
 @keyframes blink {
@@ -90,6 +211,6 @@ html, body {
   50%       { opacity: 0; }
 }
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 8px #2dd4bf; }
-  50%       { box-shadow: 0 0 20px #2dd4bf, 0 0 40px rgba(45,212,191,0.3); }
+  0%, 100% { box-shadow: 0 0 8px var(--teal); }
+  50%       { box-shadow: 0 0 20px var(--teal), 0 0 40px rgba(45,212,191,0.3); }
 }

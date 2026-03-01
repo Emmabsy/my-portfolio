@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { siteConfig } from "@/lib/data";
-import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { label: "Home",    href: "/" },
@@ -16,11 +15,8 @@ export function Navbar() {
   const path = usePathname();
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 flex h-16 items-center justify-between px-[clamp(20px,5vw,80px)] backdrop-blur-xl"
-      style={{ background: "rgba(10,14,26,0.75)", borderBottom: "1px solid var(--border)" }}
-    >
-      <Link href="/" className="font-mono text-[13px] font-bold tracking-[3px] text-indigo">
+    <nav className="nav-glass fixed left-0 right-0 top-0 z-50 flex h-16 items-center justify-between px-[clamp(20px,5vw,80px)]">
+      <Link href="/" className="font-mono text-[13px] font-bold tracking-[3px]" style={{ color: "var(--brand)" }}>
         {"<EM />"}
       </Link>
 
@@ -29,10 +25,10 @@ export function Navbar() {
           <Link
             key={href}
             href={href}
-            className={cn(
-              "font-sans text-[13px] tracking-wide transition-colors",
-              path === href ? "text-indigo" : "text-slate-400 hover:text-slate-100"
-            )}
+            className="font-sans text-[13px] tracking-wide transition-colors duration-150"
+            style={{ color: path === href ? "var(--brand)" : "var(--text-muted)" }}
+            onMouseEnter={e => ((e.currentTarget as HTMLElement).style.color = path === href ? "var(--brand)" : "var(--text)")}
+            onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = path === href ? "var(--brand)" : "var(--text-muted)")}
           >
             {label}
           </Link>
@@ -44,7 +40,10 @@ export function Navbar() {
         <a
           href={`mailto:${siteConfig.email}`}
           data-magnetic
-          className="rounded-lg bg-indigo px-4 py-2 font-mono text-[12px] font-semibold text-white shadow-glow transition-shadow hover:shadow-glow-lg"
+          className="rounded-lg px-4 py-2 font-mono text-[12px] font-semibold text-white transition-shadow"
+          style={{ background: "var(--brand)", boxShadow: "0 0 20px rgba(99,102,241,0.3)" }}
+          onMouseEnter={e => ((e.currentTarget as HTMLElement).style.boxShadow = "0 0 40px rgba(99,102,241,0.55)")}
+          onMouseLeave={e => ((e.currentTarget as HTMLElement).style.boxShadow = "0 0 20px rgba(99,102,241,0.3)")}
         >
           Hire me
         </a>
