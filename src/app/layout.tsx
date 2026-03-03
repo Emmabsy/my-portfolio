@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display, Fira_Code } from "next/font/google";
 import { MagneticCursor } from "@/components/ui/MagneticCursor";
 import { ThemeProvider }  from "@/components/ui/ThemeProvider";
-import "./globals.css";
+import "./global.css";
 import { siteConfig } from "@/lib/data";
 
 const dmSans   = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", display: "swap" });
