@@ -15,7 +15,7 @@ export interface Project {
   techStack?: string[];
 }
 
-export type ProjectTag = "AI" | "ML" | "Web" | "Frontend" | "Game" | "Mobile" | "Systems" | "OSS" | "Tools";
+export type ProjectTag = "AI" | "ML" | "Web" | "Frontend" | "Mobile" | "Systems" | "Automation" | "Tools" | "Desktop";
 
 export interface Experience {
   id: string;

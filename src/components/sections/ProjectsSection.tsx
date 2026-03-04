@@ -5,20 +5,23 @@ import { featuredProjects } from "@/lib/data";
 import type { Project } from "@/types";
 
 const ACCENT: Record<string, { panel: string; dot: string; tagBg: string; tagBorder: string; glyph: string; year: string }> = {
-  "ats-resume":        { panel: "linear-gradient(140deg,#0c1a2e,#1a3a6e,#0a1020)", dot: "#60a5fa", tagBg: "rgba(96,165,250,0.15)",  tagBorder: "rgba(96,165,250,0.3)",  glyph: "ATS", year: "2025" },
-  "tendza-ai":         { panel: "linear-gradient(140deg,#1e1b4b,#312e81,#0f172a)", dot: "#a78bfa", tagBg: "rgba(167,139,250,0.15)", tagBorder: "rgba(167,139,250,0.3)", glyph: "AI",  year: "2024" },
-  "plumbee-db":        { panel: "linear-gradient(140deg,#0a2318,#1e3a2f,#0a1a10)", dot: "#34d399", tagBg: "rgba(52,211,153,0.15)",  tagBorder: "rgba(52,211,153,0.3)",  glyph: "DB",  year: "2023" },
-  "portfolio-v2":      { panel: "linear-gradient(140deg,#1e1b4b,#4c1d95,#1e1040)", dot: "#2dd4bf", tagBg: "rgba(45,212,191,0.15)",  tagBorder: "rgba(45,212,191,0.3)",  glyph: "UI",  year: "2025" },
-  "ml-models":         { panel: "linear-gradient(140deg,#1a1000,#2d1f00,#1a1000)", dot: "#fbbf24", tagBg: "rgba(251,191,36,0.15)",  tagBorder: "rgba(251,191,36,0.3)",  glyph: "ML",  year: "2023" },
-  "mobile-app":        { panel: "linear-gradient(140deg,#1a0a2e,#2d1a5c,#0f0720)", dot: "#f472b6", tagBg: "rgba(244,114,182,0.15)", tagBorder: "rgba(244,114,182,0.3)", glyph: "APP", year: "2024" },
-  "django-api":        { panel: "linear-gradient(140deg,#0a2010,#1a4020,#081508)", dot: "#4ade80", tagBg: "rgba(74,222,128,0.15)",  tagBorder: "rgba(74,222,128,0.3)",  glyph: "API", year: "2023" },
-"laravel-ecommerce": { panel: "linear-gradient(140deg,#2a0a0a,#5c1a1a,#1a0808)", dot: "#f87171", tagBg: "rgba(248,113,113,0.15)", tagBorder: "rgba(248,113,113,0.3)", glyph: "E/C", year: "2022" },
-"ai-chatbot":          { panel: "linear-gradient(140deg,#0c1a2e,#0a2a4e,#050f1a)", dot: "#38bdf8", tagBg: "rgba(56,189,248,0.15)",  tagBorder: "rgba(56,189,248,0.3)",  glyph: "BOT",  year: "2025" },
-  "automation-scripts":  { panel: "linear-gradient(140deg,#1a100a,#3d2010,#1a0a00)", dot: "#fb923c", tagBg: "rgba(251,146,60,0.15)",  tagBorder: "rgba(251,146,60,0.3)",  glyph: "⚙",   year: "2024" },
-  "nextjs-saas-starter": { panel: "linear-gradient(140deg,#0f172a,#1e2a4a,#0a0f20)", dot: "#818cf8", tagBg: "rgba(129,140,248,0.15)", tagBorder: "rgba(129,140,248,0.3)", glyph: "SaaS", year: "2024" },
-  "flutter-finance":     { panel: "linear-gradient(140deg,#001a2e,#00344e,#001020)", dot: "#22d3ee", tagBg: "rgba(34,211,238,0.15)",  tagBorder: "rgba(34,211,238,0.3)",  glyph: "₣",   year: "2024" },
+  "resumepro": { panel: "linear-gradient(140deg,#0c1a2e,#1a3a6e,#0a1020)", dot: "#60a5fa", tagBg: "rgba(96,165,250,0.15)", tagBorder: "rgba(96,165,250,0.3)", glyph: "ATS", year: "2025" },
+  "tendza-ai": { panel: "linear-gradient(140deg,#1e1b4b,#312e81,#0f172a)", dot: "#a78bfa", tagBg: "rgba(167,139,250,0.15)", tagBorder: "rgba(167,139,250,0.3)", glyph: "AI", year: "2024" },
+  "welaspace": { panel: "linear-gradient(140deg,#0a1628,#1a2d50,#080e1a)", dot: "#38bdf8", tagBg: "rgba(56,189,248,0.15)", tagBorder: "rgba(56,189,248,0.3)", glyph: "WS", year: "2024" },
+  "devflow-pro": { panel: "linear-gradient(140deg,#0f0a20,#231840,#0a0615)", dot: "#c084fc", tagBg: "rgba(192,132,252,0.15)", tagBorder: "rgba(192,132,252,0.3)", glyph: "DEV", year: "2024" },
+  "ghostorganize-pro": { panel: "linear-gradient(140deg,#0a1a10,#183028,#050e08)", dot: "#34d399", tagBg: "rgba(52,211,153,0.15)", tagBorder: "rgba(52,211,153,0.3)", glyph: "GO", year: "2024" },
+  "n8n-bundle": { panel: "linear-gradient(140deg,#1a0a00,#3d1c00,#120600)", dot: "#fb923c", tagBg: "rgba(251,146,60,0.15)", tagBorder: "rgba(251,146,60,0.3)", glyph: "n8n", year: "2024" },
+  "n8n-upwork-proposal": { panel: "linear-gradient(140deg,#0a1400,#1e2e00,#060800)", dot: "#a3e635", tagBg: "rgba(163,230,53,0.15)", tagBorder: "rgba(163,230,53,0.3)", glyph: "UPW", year: "2024" },
+  "n8n-video-generator": { panel: "linear-gradient(140deg,#1a0010,#3a0028,#0d0008)", dot: "#f472b6", tagBg: "rgba(244,114,182,0.15)", tagBorder: "rgba(244,114,182,0.3)", glyph: "VID", year: "2025" },
+  "mac-toolbox": { panel: "linear-gradient(140deg,#1a0a0a,#3a1010,#0d0404)", dot: "#f87171", tagBg: "rgba(248,113,113,0.15)", tagBorder: "rgba(248,113,113,0.3)", glyph: "MAC", year: "2024" },
+  "plumbee-db": { panel: "linear-gradient(140deg,#0a2318,#1e3a2f,#0a1a10)", dot: "#34d399", tagBg: "rgba(52,211,153,0.15)", tagBorder: "rgba(52,211,153,0.3)", glyph: "DB", year: "2023" },
+  "django-api": { panel: "linear-gradient(140deg,#0a2010,#1a4020,#081508)", dot: "#4ade80", tagBg: "rgba(74,222,128,0.15)", tagBorder: "rgba(74,222,128,0.3)", glyph: "API", year: "2023" },
+  "laravel-ecommerce": { panel: "linear-gradient(140deg,#2a0a0a,#5c1a1a,#1a0808)", dot: "#f87171", tagBg: "rgba(248,113,113,0.15)", tagBorder: "rgba(248,113,113,0.3)", glyph: "E/C", year: "2022" },
+  "mobile-app": { panel: "linear-gradient(140deg,#1a0a2e,#2d1a5c,#0f0720)", dot: "#f472b6", tagBg: "rgba(244,114,182,0.15)", tagBorder: "rgba(244,114,182,0.3)", glyph: "APP", year: "2024" },
+  "flutter-finance": { panel: "linear-gradient(140deg,#001a2e,#00344e,#001020)", dot: "#22d3ee", tagBg: "rgba(34,211,238,0.15)", tagBorder: "rgba(34,211,238,0.3)", glyph: "₣", year: "2024" },
+  "ml-models": { panel: "linear-gradient(140deg,#1a1000,#2d1f00,#1a1000)", dot: "#fbbf24", tagBg: "rgba(251,191,36,0.15)", tagBorder: "rgba(251,191,36,0.3)", glyph: "ML", year: "2023" },
+  "portfolio-v2": { panel: "linear-gradient(140deg,#1e1b4b,#4c1d95,#1e1040)", dot: "#2dd4bf", tagBg: "rgba(45,212,191,0.15)", tagBorder: "rgba(45,212,191,0.3)", glyph: "UI", year: "2025" },
 };
-
 const FALLBACK = ACCENT["tendza-ai"];
 
 const CARD_H = 480;
