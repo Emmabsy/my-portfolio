@@ -13,9 +13,22 @@ export interface Project {
   tag: ProjectTag;
   featured?: boolean;
   techStack?: string[];
+  image?: string;
+  wip?: boolean;
 }
 
-export type ProjectTag = "AI" | "ML" | "Web" | "Frontend" | "Mobile" | "Systems" | "Automation" | "Tools" | "Desktop";
+export type ProjectTag = "AI" | "ML" | "Web" | "Frontend" | "Mobile" | "Systems" | "Automation" | "Tools" | "Desktop" | "Game" | "SaaS";
+
+export interface Automation {
+  id: string;
+  title: string;
+  description: string;
+  longDescription: string;
+  tags: string[];
+  platform: "n8n" | "Make" | "Zapier" | "Custom";
+  liveUrl?: string;
+  wip?: boolean;
+}
 
 export interface Experience {
   id: string;
@@ -42,6 +55,7 @@ export interface SiteConfig {
   description: string;
   url: string;
   email: string;
+  phone: string;
   location: string;
   availability: string;
   socials: { github?: string; twitter?: string; linkedin?: string; dribbble?: string };

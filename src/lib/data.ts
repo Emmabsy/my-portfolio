@@ -1,11 +1,12 @@
-import type { SiteConfig, Project, Experience, TechItem } from "@/types";
+import type { SiteConfig, Project, Experience, TechItem, Automation } from "@/types";
 
 export const siteConfig: SiteConfig = {
   name: "Emma Maikuri",
   tagline: "I build things for the web — and beyond.",
-  description: "Full-stack software developer based in Nairobi, Kenya. I craft dynamic interfaces, robust back-end systems, and AI-powered applications across web and mobile.",
+  description: "Full-stack software developer based in Nairobi, Kenya. I craft dynamic interfaces, robust back-end systems, AI-powered applications, and automation workflows.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://emmabsy.github.io",
   email: "maikuriemma@gmail.com",
+  phone: "+254726924299",
   location: "Nairobi, Kenya",
   availability: "Open to opportunities",
   socials: {
@@ -21,15 +22,12 @@ export const siteConfig: SiteConfig = {
 
 export const projects: Project[] = [
 
-  // ══════════════════════════════════════════════════
-  //  AI TOOLS
-  // ══════════════════════════════════════════════════
-
+  // ── AI / SaaS ──────────────────────────────────────────────────────────
   {
     id: "resumepro",
     title: "ResumePro — AI Resume Optimiser",
-    description: "AI-powered resume scorer and rewriter. Paste your resume + job description and get an ATS score, keyword gap analysis, and a fully rewritten resume in seconds.",
-    longDescription: "ResumePro analyses your resume against any job description using AI, returns an ATS compatibility score, highlights keyword gaps, and produces a fully rewritten, optimised version — all in under 60 seconds. Built with Next.js and deployed live on Vercel.",
+    description: "AI-powered resume scorer and rewriter. Get an ATS score, keyword gap analysis, and a fully rewritten resume in under 60 seconds.",
+    longDescription: "ResumePro analyses your resume against any job description using AI, returns an ATS compatibility score, highlights keyword gaps, and produces a fully rewritten, optimised version. Built with Next.js and live on Vercel.",
     language: "TypeScript", languageColor: "#3178c6",
     stars: 0, forks: 0, hasLiveDemo: true,
     liveUrl: "https://resumepro-sigma.vercel.app/",
@@ -37,12 +35,35 @@ export const projects: Project[] = [
     tag: "AI", featured: true,
     techStack: ["Next.js", "TypeScript", "OpenAI API", "Vercel AI SDK", "TailwindCSS"],
   },
-
+  {
+    id: "prompt-bible",
+    title: "Prompt Engineering Bible",
+    description: "500+ AI prompts that actually work — structured by use case, model, and outcome. The definitive reference for AI power users.",
+    longDescription: "A comprehensive library of 500+ battle-tested AI prompts organised by category — writing, coding, business, research, creative, and more. Each prompt includes a breakdown of why it works, variables to customise, and example outputs.",
+    language: "TypeScript", languageColor: "#3178c6",
+    stars: 0, forks: 0, hasLiveDemo: true,
+    liveUrl: "https://prompt-engineer-taupe.vercel.app/",
+    githubUrl: "https://github.com/emmabsy",
+    tag: "AI", featured: true,
+    techStack: ["Next.js", "TypeScript", "MDX", "TailwindCSS"],
+  },
+  {
+    id: "launchkit",
+    title: "LaunchKit — Ship Your SaaS in Hours",
+    description: "Production-ready SaaS boilerplate — auth, billing, GDPR, rate limiting, and 6 security layers pre-wired. Clone and build.",
+    longDescription: "LaunchKit is a complete SaaS starter kit built on Next.js 15. Includes Clerk auth, Stripe subscriptions, Supabase PostgreSQL with Row Level Security in EU Frankfurt, Prisma ORM, React Email via Resend, Upstash Redis rate limiting, and full GDPR compliance. Average 3 hours to first payment.",
+    language: "TypeScript", languageColor: "#3178c6",
+    stars: 0, forks: 0, hasLiveDemo: true,
+    liveUrl: "https://saas-launchkit.vercel.app/",
+    githubUrl: "https://github.com/emmabsy",
+    tag: "SaaS", featured: true,
+    techStack: ["Next.js 15", "Clerk", "Stripe", "Supabase", "Prisma", "Upstash Redis", "Resend"],
+  },
   {
     id: "tendza-ai",
     title: "Tendza AI",
-    description: "Production-grade AI web app with real-time LLM features, sub-second streaming, and a clean modern UI — live on Vercel.",
-    longDescription: "Tendza AI is a production-grade AI application built with Next.js 14 and the Vercel AI SDK. It delivers intelligent, real-time features powered by large language models, with a clean UI and sub-second response streaming.",
+    description: "Production-grade AI web app with real-time LLM streaming and a clean modern UI — live on Vercel.",
+    longDescription: "Tendza AI is a production-grade AI application built with Next.js 14 and the Vercel AI SDK. Delivers intelligent, real-time features powered by large language models with sub-second response streaming.",
     language: "TypeScript", languageColor: "#3178c6",
     stars: 0, forks: 0, hasLiveDemo: true,
     liveUrl: "https://tendza-ai.vercel.app/",
@@ -51,15 +72,12 @@ export const projects: Project[] = [
     techStack: ["Next.js", "React", "TypeScript", "Vercel AI SDK", "TailwindCSS"],
   },
 
-  // ══════════════════════════════════════════════════
-  //  SAAS / WEB APPS
-  // ══════════════════════════════════════════════════
-
+  // ── Web Apps / Tools ────────────────────────────────────────────────────
   {
     id: "welaspace",
-    title: "WelaSpace",
-    description: "Premium client portal and project management platform — built for freelancers and agencies to manage clients, projects, and deliverables in one place.",
-    longDescription: "WelaSpace is a polished client portal and project management tool designed for freelancers and small agencies. Features include project dashboards, file sharing, invoice management, client messaging, and a beautiful branded client-facing view. Available on Gumroad.",
+    title: "WelaSpace — Client Portal",
+    description: "Premium client portal and project management platform for freelancers and agencies — projects, invoices, files, and messaging in one place.",
+    longDescription: "WelaSpace is a polished client portal built for freelancers and small agencies. Features project dashboards, file sharing, invoice management, client messaging, and a beautiful branded client-facing view.",
     language: "TypeScript", languageColor: "#3178c6",
     stars: 0, forks: 0, hasLiveDemo: true,
     liveUrl: "https://maikuri.gumroad.com/l/atbel",
@@ -67,12 +85,11 @@ export const projects: Project[] = [
     tag: "Web", featured: true,
     techStack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "TailwindCSS", "Stripe"],
   },
-
   {
     id: "devflow-pro",
     title: "DevFlow Pro: The Project Architect",
-    description: "Developer-focused project planning and architecture tool — map dependencies, generate boilerplate, and ship faster.",
-    longDescription: "DevFlow Pro is a project planning toolkit built for developers. Helps you map out project architecture, define module dependencies, generate folder structures and boilerplate code, and create technical spec documents — all before writing a single line of production code. Available on Gumroad.",
+    description: "Developer-focused project planning tool — map dependencies, generate boilerplate, and create technical specs before writing a line of code.",
+    longDescription: "DevFlow Pro helps developers map project architecture, define module dependencies, generate folder structures and boilerplate, and produce technical spec documents. Available on Gumroad.",
     language: "TypeScript", languageColor: "#3178c6",
     stars: 0, forks: 0, hasLiveDemo: true,
     liveUrl: "https://maikuri.gumroad.com/l/zakbe",
@@ -80,12 +97,11 @@ export const projects: Project[] = [
     tag: "Tools", featured: true,
     techStack: ["Next.js", "TypeScript", "React Flow", "OpenAI API", "TailwindCSS"],
   },
-
   {
     id: "ghostorganize-pro",
     title: "GhostOrganize Pro",
     description: "AI-powered personal organisation system — tasks, notes, and projects intelligently structured so nothing falls through the cracks.",
-    longDescription: "GhostOrganize Pro is a smart productivity and organisation app powered by AI. It automatically categorises your tasks and notes, surfaces priorities, links related items, and keeps your workspace clean. Think of it as a second brain that actually understands context. Available on Gumroad.",
+    longDescription: "GhostOrganize Pro is a smart productivity app powered by AI. It automatically categorises tasks and notes, surfaces priorities, links related items, and keeps your workspace clean. Think of it as a second brain that understands context.",
     language: "TypeScript", languageColor: "#3178c6",
     stars: 0, forks: 0, hasLiveDemo: true,
     liveUrl: "https://maikuri.gumroad.com/l/exaefv",
@@ -93,16 +109,24 @@ export const projects: Project[] = [
     tag: "Tools",
     techStack: ["Next.js", "TypeScript", "OpenAI API", "Notion API", "TailwindCSS"],
   },
+  {
+    id: "edu-platform",
+    title: "EduHub — Courses & Content Platform",
+    description: "A platform for publishing courses, articles, and digital content — clean reading experience, structured curriculum, and creator dashboard.",
+    longDescription: "A full-featured educational content platform with course builder, article publishing, video lessons, student progress tracking, and a creator analytics dashboard. Currently in active development.",
+    language: "TypeScript", languageColor: "#3178c6",
+    stars: 0, forks: 0, hasLiveDemo: false,
+    githubUrl: "https://github.com/emmabsy",
+    tag: "Web", wip: true,
+    techStack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "TailwindCSS", "Uploadthing"],
+  },
 
-  // ══════════════════════════════════════════════════
-  //  N8N AUTOMATIONS
-  // ══════════════════════════════════════════════════
-
+  // ── Automations ─────────────────────────────────────────────────────────
   {
     id: "n8n-bundle",
     title: "n8n AI Automation Bundle",
-    description: "A curated bundle of production-ready n8n automation workflows — AI agents, data pipelines, API integrations, and more.",
-    longDescription: "A comprehensive collection of battle-tested n8n automation workflows built for real business use cases. Includes AI agent workflows, CRM integrations, data sync pipelines, webhook handlers, and scheduled task automations. Each workflow is documented and ready to import. Available on Gumroad.",
+    description: "A curated collection of production-ready n8n workflows — AI agents, CRM integrations, data pipelines, and scheduled automations.",
+    longDescription: "A comprehensive bundle of battle-tested n8n automation workflows for real business use cases. Includes AI agent workflows, CRM sync, data pipelines, webhook handlers, and scheduled task automations. Each workflow is documented and ready to import.",
     language: "JSON", languageColor: "#cbcb41",
     stars: 0, forks: 0, hasLiveDemo: true,
     liveUrl: "https://maikuri.gumroad.com/l/uidqk",
@@ -110,12 +134,11 @@ export const projects: Project[] = [
     tag: "Automation",
     techStack: ["n8n", "OpenAI API", "Webhooks", "REST APIs", "JavaScript"],
   },
-
   {
     id: "n8n-upwork-proposal",
-    title: "n8n Upwork Auto-Proposal & Asset Generator",
+    title: "n8n Upwork Auto-Proposal Generator",
     description: "Automated n8n workflow that reads Upwork job listings and generates tailored proposals and portfolio assets using AI.",
-    longDescription: "This n8n automation monitors Upwork RSS feeds or API for new job postings matching your criteria, passes them through an AI pipeline to generate personalised proposals, cover letters, and relevant portfolio assets — then formats everything ready to submit. A massive time-saver for active freelancers. Available on Gumroad.",
+    longDescription: "This n8n automation monitors Upwork for new job postings, passes them through an AI pipeline to generate personalised proposals, cover letters, and relevant portfolio assets — then formats everything ready to submit. A massive time-saver for active freelancers.",
     language: "JSON", languageColor: "#cbcb41",
     stars: 0, forks: 0, hasLiveDemo: true,
     liveUrl: "https://maikuri.gumroad.com/l/numto",
@@ -123,12 +146,11 @@ export const projects: Project[] = [
     tag: "Automation",
     techStack: ["n8n", "OpenAI API", "Upwork API", "Google Docs API", "Webhooks"],
   },
-
   {
     id: "n8n-video-generator",
     title: "n8n AI Long-Form Video Generator",
-    description: "End-to-end n8n pipeline that generates long-form videos with AI voiceover via ElevenLabs, visuals via PIAPI, edits with Shotstack, and auto-posts to YouTube.",
-    longDescription: "A fully automated n8n video production pipeline. Give it a topic — it generates a script with AI, produces professional voiceover via ElevenLabs, generates visuals via PIAPI, stitches everything together using Shotstack or Creatomate, adds captions, and posts the final video directly to YouTube. Hands-free content at scale. Available on Gumroad.",
+    description: "End-to-end n8n pipeline: AI script → ElevenLabs voiceover → PIAPI visuals → Shotstack edit → auto-post to YouTube.",
+    longDescription: "A fully automated n8n video production pipeline. Give it a topic — it generates a script with AI, produces professional voiceover via ElevenLabs, generates visuals via PIAPI, stitches everything using Shotstack or Creatomate, adds captions, and posts the final video directly to YouTube. Hands-free content at scale.",
     language: "JSON", languageColor: "#cbcb41",
     stars: 0, forks: 0, hasLiveDemo: true,
     liveUrl: "https://maikuri.gumroad.com/l/jhucmw",
@@ -136,16 +158,59 @@ export const projects: Project[] = [
     tag: "Automation",
     techStack: ["n8n", "ElevenLabs API", "PIAPI", "Shotstack", "YouTube API", "OpenAI"],
   },
+  {
+    id: "stockcard-twin",
+    title: "StockCard Digital Twin",
+    description: "Automated digital twin for StockCard inventory — real-time sync, anomaly detection, and AI-generated reorder recommendations.",
+    longDescription: "An n8n-powered automation that creates and maintains a live digital twin of StockCard inventory data. Syncs stock levels in real time, flags anomalies, generates AI-powered reorder recommendations, and pushes alerts to Slack or email when thresholds are breached.",
+    language: "JSON", languageColor: "#cbcb41",
+    stars: 0, forks: 0, hasLiveDemo: false,
+    githubUrl: "https://github.com/emmabsy",
+    tag: "Automation",
+    techStack: ["n8n", "StockCard API", "OpenAI", "Slack API", "PostgreSQL"],
+  },
 
-  // ══════════════════════════════════════════════════
-  //  DESKTOP / NATIVE TOOLS
-  // ══════════════════════════════════════════════════
+  // ── Games ───────────────────────────────────────────────────────────────
+  {
+    id: "nairobi-rush",
+    title: "Nairobi Rush",
+    description: "Fast-paced endless runner set in Nairobi — dodge matatus, collect coins, and survive the CBD. Built in Unity with C#.",
+    longDescription: "Nairobi Rush is an endless runner mobile game set in downtown Nairobi. Players dodge matatus, boda bodas, and street vendors while collecting coins and power-ups. Features procedurally generated levels, a local leaderboard, and Kenyan-themed art assets. Built in Unity with C#.",
+    language: "C#", languageColor: "#178600",
+    stars: 0, forks: 0, hasLiveDemo: false,
+    githubUrl: "https://github.com/emmabsy",
+    tag: "Game",
+    techStack: ["Unity", "C#", "Unity Ads", "Firebase", "Android SDK"],
+  },
+  {
+    id: "grid-defender",
+    title: "Grid Defender",
+    description: "Strategic tower-defense game built in Python with Pygame — place defenses, manage resources, and survive 30 waves of enemies.",
+    longDescription: "Grid Defender is a tower-defense strategy game built with Python and Pygame. Players place and upgrade towers on a hex grid, manage a resource economy, and survive 30 escalating waves of enemy types. Features a wave editor and high-score persistence.",
+    language: "Python", languageColor: "#3572a5",
+    stars: 0, forks: 0, hasLiveDemo: false,
+    githubUrl: "https://github.com/emmabsy",
+    tag: "Game",
+    techStack: ["Python", "Pygame", "SQLite", "JSON levels"],
+  },
+  {
+    id: "void-drift",
+    title: "Void Drift",
+    description: "Browser-based space shooter built with vanilla JavaScript and Canvas — smooth 60fps, procedural asteroid fields, and a global leaderboard.",
+    longDescription: "Void Drift is a browser-native space shooter powered by the HTML5 Canvas API and vanilla JavaScript. Features procedurally generated asteroid fields, enemy AI ships, power-up drops, smooth 60fps rendering with requestAnimationFrame, and a global leaderboard backed by a lightweight Node.js API.",
+    language: "JavaScript", languageColor: "#f1e05a",
+    stars: 0, forks: 0, hasLiveDemo: false,
+    githubUrl: "https://github.com/emmabsy",
+    tag: "Game",
+    techStack: ["JavaScript", "HTML5 Canvas", "Node.js", "Express.js", "SQLite"],
+  },
 
+  // ── Desktop ──────────────────────────────────────────────────────────────
   {
     id: "mac-toolbox",
     title: "The Mac Toolbox",
-    description: "Three essential Mac utilities in one: batch image resizer, PDF merger, and studio-grade audio extractor.",
-    longDescription: "A suite of three native Mac utilities: Image Resizer Pro (batch resize and convert images), Pro PDF Merger (combine, reorder and compress PDFs), and Studio Audio Extractor (rip high-quality audio tracks from video files). Clean native UI, no internet required. Available on Gumroad.",
+    description: "Three essential Mac utilities in one: batch image resizer, PDF merger, and studio-grade audio extractor. No internet required.",
+    longDescription: "A suite of three native Mac utilities: Image Resizer Pro (batch resize and convert images), Pro PDF Merger (combine, reorder, compress PDFs), and Studio Audio Extractor (rip high-quality audio from video files). Clean native SwiftUI, completely offline.",
     language: "Swift", languageColor: "#F05138",
     stars: 0, forks: 0, hasLiveDemo: true,
     liveUrl: "https://maikuri.gumroad.com/l/oxwus",
@@ -154,38 +219,34 @@ export const projects: Project[] = [
     techStack: ["Swift", "SwiftUI", "AVFoundation", "PDFKit", "AppKit"],
   },
 
-  // ══════════════════════════════════════════════════
-  //  SYSTEMS / BACKEND
-  // ══════════════════════════════════════════════════
-
+  // ── Systems / Backend ────────────────────────────────────────────────────
   {
     id: "plumbee-db",
-    title: "Plumbee Farmer DB",
-    description: "Full-stack farmer database management system for Plumbee Wholefoods — boosting operational productivity across the supply chain.",
-    longDescription: "Designed and built a complete farmer database management system using JavaScript, Express.js, and MySQL. Tracks supplier relationships, farm data, and inventory — reducing manual processes and cutting admin time significantly.",
+    title: "Plumbee Farmer Management System",
+    description: "Full-stack farmer database and supply chain management system for Plumbee Wholefoods — tracking 200+ suppliers, farm data, and inventory.",
+    longDescription: "Designed and built a complete farmer database management system for Plumbee Wholefoods using JavaScript, Express.js, and MySQL. The system tracks 200+ supplier relationships, farm data, produce quality metrics, and inventory levels — reducing manual admin processes and significantly cutting operational overhead.",
     language: "JavaScript", languageColor: "#f1e05a",
     stars: 0, forks: 0, hasLiveDemo: false,
     githubUrl: "https://github.com/emmabsy",
     tag: "Systems",
-    techStack: ["JavaScript", "Express.js", "MySQL", "Node.js"],
+    image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&q=80",
+    techStack: ["JavaScript", "Express.js", "MySQL", "Node.js", "Bootstrap"],
   },
-
   {
     id: "django-api",
     title: "Django REST API",
     description: "Production-grade REST API — JWT auth, PostgreSQL, Redis rate limiting, OpenAPI docs, containerised with Docker.",
-    longDescription: "A scalable Django REST Framework API with JWT auth, role-based access control, PostgreSQL with connection pooling, Redis-based rate limiting, and auto-generated OpenAPI / Swagger docs. Containerised with Docker.",
+    longDescription: "A scalable Django REST Framework API with JWT auth, role-based access control, PostgreSQL with connection pooling, Redis-based rate limiting, and auto-generated OpenAPI/Swagger docs. Containerised with Docker.",
     language: "Python", languageColor: "#3572a5",
     stars: 0, forks: 0, hasLiveDemo: false,
     githubUrl: "https://github.com/emmabsy",
     tag: "Systems",
     techStack: ["Python", "Django", "PostgreSQL", "Redis", "Docker"],
   },
-
   {
     id: "laravel-ecommerce",
     title: "Laravel E-Commerce Platform",
-    description: "Full e-commerce platform with M-Pesa & Stripe payments, inventory management, and a Filament admin dashboard.",
+    description: "Full e-commerce with M-Pesa & Stripe payments, inventory management, and a Filament admin dashboard.",
     longDescription: "A complete e-commerce solution for the East African market. Built on Laravel with Livewire, integrates M-Pesa Daraja API and Stripe, features a custom inventory system, order management, and a Filament admin panel.",
     language: "PHP", languageColor: "#4F5D95",
     stars: 0, forks: 0, hasLiveDemo: false,
@@ -194,14 +255,11 @@ export const projects: Project[] = [
     techStack: ["PHP", "Laravel", "Livewire", "MySQL", "M-Pesa API", "Stripe"],
   },
 
-  // ══════════════════════════════════════════════════
-  //  MOBILE
-  // ══════════════════════════════════════════════════
-
+  // ── Mobile ───────────────────────────────────────────────────────────────
   {
     id: "mobile-app",
     title: "Cross-Platform Mobile App",
-    description: "A React Native app targeting iOS and Android — offline-first, push notifications, and biometric auth.",
+    description: "React Native app for iOS and Android — offline-first architecture, push notifications, and biometric authentication.",
     longDescription: "A production-ready cross-platform mobile application built with React Native and Expo. Features offline-first data sync, push notifications, biometric authentication, and a custom component library. Ships from a single codebase.",
     language: "JavaScript", languageColor: "#f1e05a",
     stars: 0, forks: 0, hasLiveDemo: false,
@@ -209,11 +267,10 @@ export const projects: Project[] = [
     tag: "Mobile",
     techStack: ["React Native", "Expo", "JavaScript", "AsyncStorage", "Firebase"],
   },
-
   {
     id: "flutter-finance",
     title: "Flutter Finance Tracker",
-    description: "Personal finance app in Flutter — expense tracking, budget goals, visual charts, and KES / USD support.",
+    description: "Personal finance app — expense tracking, budget goals, visual charts, and KES / USD support. Built with Flutter.",
     longDescription: "A cross-platform finance tracker built with Flutter and Dart. Features expense categorisation, monthly budget goals, chart visualisations with fl_chart, and supports both Kenyan Shilling and USD. Stores data locally with Hive.",
     language: "Dart", languageColor: "#00B4AB",
     stars: 0, forks: 0, hasLiveDemo: false,
@@ -222,14 +279,11 @@ export const projects: Project[] = [
     techStack: ["Flutter", "Dart", "Hive", "fl_chart", "Firebase"],
   },
 
-  // ══════════════════════════════════════════════════
-  //  ML
-  // ══════════════════════════════════════════════════
-
+  // ── ML ───────────────────────────────────────────────────────────────────
   {
     id: "ml-models",
     title: "ML Experiments",
-    description: "A curated collection of ML models — NLP, image classification, and regression — trained and evaluated in Python.",
+    description: "A curated sandbox of ML models — NLP, image classification, and regression — trained and documented in Python.",
     longDescription: "An ongoing research sandbox: NLP sentiment models, image classifiers with TensorFlow, regression experiments with Scikit-learn, and data pipelines in Pandas. Each model is documented with training metrics and usage notes.",
     language: "Python", languageColor: "#3572a5",
     stars: 0, forks: 0, hasLiveDemo: false,
@@ -238,7 +292,7 @@ export const projects: Project[] = [
     techStack: ["Python", "TensorFlow", "Scikit-learn", "Pandas", "NumPy"],
   },
 
-  // Portfolio
+  // ── Portfolio ─────────────────────────────────────────────────────────────
   {
     id: "portfolio-v2",
     title: "Dev Portfolio v2",
@@ -253,26 +307,97 @@ export const projects: Project[] = [
   },
 ];
 
-// First 6 shown on homepage sticky stack
-export const featuredProjects = projects.slice(0, 6);
+// Homepage sticky stack — top 6 featured
+export const featuredProjects = projects.filter(p => p.featured).slice(0, 6);
+
+// ── Automations ─────────────────────────────────────────────────────────────
+export const automations: Automation[] = [
+  {
+    id: "n8n-video",
+    title: "AI Long-Form Video Generator",
+    description: "Full pipeline: AI script → ElevenLabs voiceover → PIAPI visuals → Shotstack edit → auto-post to YouTube.",
+    longDescription: "Give it a topic and walk away. This workflow generates a full video script with AI, produces professional voiceover via ElevenLabs, sources or generates visuals via PIAPI, stitches everything with Shotstack or Creatomate, adds auto-captions, and posts directly to YouTube — completely hands-free.",
+    tags: ["Video", "AI", "YouTube", "ElevenLabs"],
+    platform: "n8n",
+    liveUrl: "https://maikuri.gumroad.com/l/jhucmw",
+  },
+  {
+    id: "n8n-upwork",
+    title: "Upwork Auto-Proposal & Asset Generator",
+    description: "Monitors Upwork for matching jobs, generates tailored proposals, cover letters, and portfolio assets automatically.",
+    longDescription: "Set your job criteria once. This automation continuously monitors Upwork job listings, scores each posting against your profile, generates a highly personalised proposal, creates a tailored cover letter, and assembles relevant portfolio assets — all ready to submit without you lifting a finger.",
+    tags: ["Freelancing", "AI", "Upwork", "Proposals"],
+    platform: "n8n",
+    liveUrl: "https://maikuri.gumroad.com/l/numto",
+  },
+  {
+    id: "n8n-bundle",
+    title: "AI Automation Bundle",
+    description: "15+ production-ready workflows — AI agents, CRM sync, data pipelines, email automations, and webhook handlers.",
+    longDescription: "A curated bundle of 15+ battle-tested n8n workflows covering the most common automation use cases: AI chat agents, CRM data sync, scheduled reports, email trigger sequences, webhook processors, and multi-step data transformation pipelines. Import and deploy in minutes.",
+    tags: ["Bundle", "AI", "CRM", "Pipelines"],
+    platform: "n8n",
+    liveUrl: "https://maikuri.gumroad.com/l/uidqk",
+  },
+  {
+    id: "stockcard-twin",
+    title: "StockCard Digital Twin",
+    description: "Real-time digital twin for StockCard inventory — live sync, anomaly detection, and AI reorder recommendations.",
+    longDescription: "This automation maintains a live digital mirror of your StockCard inventory. It syncs stock levels in real time, uses AI to detect anomalies and predict stockouts, generates intelligent reorder recommendations, and sends immediate Slack or email alerts when critical thresholds are crossed.",
+    tags: ["Inventory", "Digital Twin", "AI", "StockCard"],
+    platform: "n8n",
+  },
+  {
+    id: "lead-nurture",
+    title: "AI Lead Nurturing Sequence",
+    description: "Captures leads from any form, scores them with AI, and triggers personalised multi-step email sequences automatically.",
+    longDescription: "A complete lead management automation. When a new lead comes in — from a website form, LinkedIn, or anywhere else — this workflow scores the lead using AI based on their profile and behaviour, assigns them to the right nurture sequence, and sends personalised emails at optimal times. Integrates with any CRM.",
+    tags: ["Lead Gen", "Email", "AI", "CRM"],
+    platform: "n8n",
+  },
+  {
+    id: "social-content",
+    title: "AI Social Media Content Pipeline",
+    description: "Turns a single blog post or topic into a week of social content — LinkedIn, Twitter/X, Instagram captions, and graphics.",
+    longDescription: "Feed this automation a blog post URL or a topic. It uses AI to extract key ideas, rewrites them into platform-native formats for LinkedIn, Twitter/X, and Instagram, generates caption variations, creates image prompts for Midjourney or DALL-E, and schedules everything via Buffer or Hootsuite.",
+    tags: ["Social Media", "Content", "AI", "Scheduling"],
+    platform: "n8n",
+  },
+  {
+    id: "invoice-processor",
+    title: "Invoice & Receipt Processor",
+    description: "Scans incoming emails for invoices and receipts, extracts data with AI, and logs everything to a Google Sheet or Airtable.",
+    longDescription: "No more manual data entry. This workflow monitors a dedicated email inbox, detects invoices and receipts using AI vision, extracts vendor, amount, date, and category, flags duplicates, and writes a clean row to your spreadsheet or accounting tool of choice.",
+    tags: ["Finance", "OCR", "AI", "Accounting"],
+    platform: "n8n",
+  },
+  {
+    id: "competitor-monitor",
+    title: "Competitor Price & Content Monitor",
+    description: "Scrapes competitor websites on a schedule, detects price changes and new content, and sends a digest to Slack.",
+    longDescription: "Stay ahead without manual checking. This automation scrapes your specified competitor URLs on a configurable schedule, compares prices and content against the previous snapshot, detects meaningful changes, and sends a concise Slack digest with highlights and direct links to what changed.",
+    tags: ["Monitoring", "Scraping", "Competitive Intel"],
+    platform: "n8n",
+  },
+];
 
 export const experience: Experience[] = [
-  {
-    id: "plumbee",
-    year: "2023 →",
-    role: "Co-founder & Software Developer",
-    company: "Plumbee Wholefoods",
-    description: "Designed and built an efficient farmer database management system using JavaScript, Express.js, and MySQL. Delivered innovative solutions under tight deadlines with rigorous QA testing.",
-    highlights: ["Full-stack DB system", "JavaScript + Express.js", "MySQL backend", "QA & stability testing"],
-    current: true,
-  },
   {
     id: "freelance",
     year: "2016 →",
     role: "Freelance Software Developer",
     company: "Independent",
-    description: "Building dynamic front-end interfaces with React and robust back-end systems in PHP, Python, and Java. Delivering optimised, cross-platform solutions for diverse clients across Africa and beyond.",
-    highlights: ["React front-ends", "PHP / Python / Java APIs", "Performance optimisation", "Agile delivery"],
+    description: "Building dynamic front-end interfaces, robust back-end systems, AI tools, and automation workflows for clients across Africa and globally. Primary focus of my practice.",
+    highlights: ["React / Next.js", "AI & n8n Automations", "PHP / Python / Java APIs", "Agile delivery"],
+    current: true,
+  },
+  {
+    id: "plumbee",
+    year: "2023 →",
+    role: "Software Developer",
+    company: "Plumbee Wholefoods",
+    description: "Built a complete farmer database management system tracking 200+ suppliers, farm data, and inventory. Delivered innovative solutions under tight deadlines with rigorous QA testing.",
+    highlights: ["Farmer DB system", "JavaScript + Express.js", "MySQL backend", "Part-time"],
     current: true,
   },
   {
@@ -297,9 +422,9 @@ export const techStack: TechItem[] = [
   { name: "Python",       category: "Language",       proficiency: "expert"     },
   { name: "Swift",        category: "Language",       proficiency: "proficient" },
   { name: "Dart",         category: "Language",       proficiency: "proficient" },
+  { name: "C#",           category: "Language",       proficiency: "proficient" },
   { name: "Java",         category: "Language",       proficiency: "proficient" },
   { name: "PHP",          category: "Language",       proficiency: "proficient" },
-  { name: "C++",          category: "Language",       proficiency: "familiar"   },
   { name: "React",        category: "Framework",      proficiency: "expert"     },
   { name: "Next.js",      category: "Framework",      proficiency: "proficient" },
   { name: "Express.js",   category: "Framework",      proficiency: "expert"     },
@@ -307,12 +432,12 @@ export const techStack: TechItem[] = [
   { name: "Laravel",      category: "Framework",      proficiency: "proficient" },
   { name: "Flutter",      category: "Framework",      proficiency: "proficient" },
   { name: "React Native", category: "Framework",      proficiency: "proficient" },
+  { name: "Unity",        category: "Framework",      proficiency: "proficient" },
   { name: "n8n",          category: "Tooling",        proficiency: "expert"     },
   { name: "MySQL",        category: "Database",       proficiency: "expert"     },
   { name: "PostgreSQL",   category: "Database",       proficiency: "proficient" },
   { name: "MongoDB",      category: "Database",       proficiency: "proficient" },
   { name: "TensorFlow",   category: "Tooling",        proficiency: "proficient" },
-  { name: "Scikit-learn", category: "Tooling",        proficiency: "proficient" },
   { name: "Azure",        category: "Infrastructure", proficiency: "proficient" },
   { name: "Docker",       category: "Infrastructure", proficiency: "proficient" },
   { name: "Git",          category: "Tooling",        proficiency: "expert"     },
@@ -322,7 +447,7 @@ export const techNames = techStack.map(t => t.name);
 
 export const terminalLines = [
   "const dev = new SoftwareEngineer('Nairobi, KE');",
-  "dev.stack  = ['React', 'Python', 'n8n', 'Flutter'];",
-  "dev.builds = ['AI Tools', 'SaaS', 'Automations', 'Mobile'];",
+  "dev.stack  = ['Next.js', 'Python', 'n8n', 'Unity'];",
+  "dev.builds = ['AI Tools', 'SaaS', 'Games', 'Automations'];",
   "dev.status = 'Open to opportunities ✦';",
 ];
